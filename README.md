@@ -26,17 +26,17 @@ Before running the script, ensure that:
 
 Installation
 
-    Clone the repository:
+Clone the repository:
 
 #
-git clone https://github.com//s-b-repo/vm2tv.git
+    git clone https://github.com//s-b-repo/vm2tv.git
 #
-cd linux-vm-streaming-setup
+    cd linux-vm-streaming-setup
 
 Make the script executable:
 
 
-chmod +x vm_streaming_setup.sh
+    chmod +x vm_streaming_setup.sh
 
 Run the script:
 
