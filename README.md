@@ -28,8 +28,9 @@ Installation
 
     Clone the repository:
 
-
+#
 git clone https://github.com//s-b-repo/vm2tv.git
+#
 cd linux-vm-streaming-setup
 
 Make the script executable:
@@ -76,11 +77,11 @@ If RTSP is enabled, you can access it at:
 Use a compatible player like VLC or an HLS/RTSP client to view the stream.
 Troubleshooting
 
-    nginx not starting: Ensure that port 80 is not in use by another service. You can check for conflicts with:
+nginx not starting: Ensure that port 80 is not in use by another service. You can check for conflicts with:
 
  
 
-sudo lsof -i :80
+    sudo lsof -i :80
 
 No video displayed: Make sure you’ve provided the correct X11 display number (e.g., :0.0).
 RTSP issues: Ensure GStreamer is properly installed and that the RTSP port you chose is not blocked by a firewall.
