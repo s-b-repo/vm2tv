@@ -65,10 +65,10 @@ configure_stream_hls() {
 
     # Choose the appropriate screen capture method
     if [ "$wayland" == "y" ]; then
-        echo "Starting wf-recorder for Wayland screen capture..."
-        wf-recorder -g "$screen_size" -f /tmp/wayland_capture.mp4 &
-        sleep 2
-        ffmpeg -re -i /tmp/wayland_capture.mp4 -c:v libx264 -b:v "$bitrate" -pix_fmt yuv420p -preset fast -crf 28 -g 50 -c:a aac \
+        echo "Starting wf-recorder for Wayland screen capture and streaming..."
+
+        # Directly stream from wf-recorder using FFmpeg
+        wf-recorder -g "$screen_size" -f - | ffmpeg -re -i - -c:v libx264 -b:v "$bitrate" -pix_fmt yuv420p -preset fast -crf 28 -g 50 -c:a aac \
         -f hls -hls_time 2 -hls_list_size 10 -hls_flags delete_segments "$hls_output" &
     else
         echo "Starting FFmpeg stream with X11 capture..."
@@ -127,7 +127,7 @@ configure_rtsp() {
         read -p "Enter the RTSP stream port (default: 8554): " rtsp_port
         rtsp_port=${rtsp_port:-8554}
 
-        # Start RTSP stream using GStreamer (revised to work properly)
+        # Start RTSP stream using GStreamer
         echo "Starting RTSP stream on port $rtsp_port..."
         gst-launch-1.0 -v ximagesrc ! videoconvert ! x264enc tune=zerolatency ! rtph264pay ! udpsink host=127.0.0.1 port=$rtsp_port &
 
