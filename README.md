@@ -66,12 +66,12 @@ Example: Accessing the Stream
 
 After the setup is complete, your HLS stream will be available at:
 
-http://<your-vm-ip>/hls/stream.m3u8
+#http://<your-vm-ip>/hls/stream.m3u8#
 
 If RTSP is enabled, you can access it at:
 
 
-rtsp://<your-vm-ip>:<rtsp-port>/live.sdp
+#rtsp://<your-vm-ip>:<rtsp-port>/live.sdp#
 
 Use a compatible player like VLC or an HLS/RTSP client to view the stream.
 Troubleshooting
